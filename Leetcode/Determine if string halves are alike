@@ -1,0 +1,31 @@
+class Solution {
+public:
+
+    bool isVowel(char c){
+        if(c=='A' || c=='E' || c=='I' || c=='O' || c=='U' || c=='a' || c=='e' || c=='i' || c=='o' || c=='u') return true;
+        return false;
+    }
+public:
+    bool halvesAreAlike(string s) {
+        int n=s.size();
+        string first=s.substr(0,n/2);
+        string second=s.substr(n/2);
+        int fh=0;
+        int sh=0;
+
+        for(char ch: first) if(isVowel(ch)) fh++;
+        for(char ch: second) if(isVowel(ch)) sh++;
+
+        if(fh==sh) return true;
+        return false;
+    }
+};
+int main() {
+    Solution solution;
+    string testString = "textbook"; // Example input
+    bool result = solution.halvesAreAlike(testString);
+
+    cout << (result ? "True" : "False") << endl; // Output the result
+
+    return 0;
+}
