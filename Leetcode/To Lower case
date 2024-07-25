@@ -1,0 +1,23 @@
+#include <iostream>
+#include <algorithm>
+#include <string>
+
+using namespace std;
+
+class Solution {
+public:
+    string toLowerCase(string s) {
+        transform(s.begin(), s.end(), s.begin(), ::tolower);
+        return s;
+    }
+};
+
+int main() {
+    Solution solution;
+    string testString = "Hello, World!"; // Example input
+    string result = solution.toLowerCase(testString);
+
+    cout << result << endl; // Output the result
+
+    return 0;
+}
