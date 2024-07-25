@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+
+using namespace std;
+
+class Solution {
+public:
+    string sortSentence(string s) {
+        vector<string> temp;
+        stringstream word(s);
+        string words;
+        while(word >> words) {
+            temp.push_back(words);
+        }
+        sort(temp.begin(), temp.end(), [](const string &a, const string &b) {
+            return a.back() < b.back();
+        });
+
+        string result;
+        for(auto i : temp) {
+            i.pop_back();
+            result += i + " ";
+        }
+        result.pop_back();
+        return result;
+    }
+};
+
+int main() {
+    Solution solution;
+    string testString = "is2 sentence4 This1 a3"; // Example input
+    string result = solution.sortSentence(testString);
+
+    cout << result << endl; // Output the result
+
+    return 0;
+}
